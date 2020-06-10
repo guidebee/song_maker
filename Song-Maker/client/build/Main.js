@@ -21372,7 +21372,11 @@
             return Xi((function* () {
                 var e = new FormData;
                 e.append("midi", t.midiData.encode(t.options)), e.append("data", JSON.stringify(t.options.toJSON()));
-                var n = yield fetch("/Song-Maker/save", {
+                delete window.document.referrer;
+                window.document.__defineGetter__('referrer', function () {
+                    return "https://musiclab.chromeexperiments.com/Song-Maker/";
+                });
+                var n = yield fetch("https://musiclab.chromeexperiments.com/Song-Maker/save", {
                     method: "POST",
                     body: e
                 }).then(e => {
