@@ -103,9 +103,13 @@ for track in china_mf.tracks:
         # mt.events.append(footer_midi_events[0])
         # mt.events.append(footer_midi_events[1])
         out_mf.tracks.append(track)
+        events=(sorted(track.events, key=lambda me: me.sortOrder))
+        for event in events:
+            print(event)
 
         out_mf.open(f'./{index}-{song_name}.mid', 'wb')
         out_mf.ticksPerQuarterNote = china_mf.ticksPerQuarterNote
 
         out_mf.write()
         out_mf.close()
+

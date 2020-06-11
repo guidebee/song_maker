@@ -21372,21 +21372,11 @@
             return Xi((function* () {
                 var e = new FormData;
                 e.append("midi", t.midiData.encode(t.options)), e.append("data", JSON.stringify(t.options.toJSON()));
-                delete window.document.referrer;
-                window.document.__defineGetter__('referrer', function () {
-                    return "https://musiclab.chromeexperiments.com/Song-Maker/";
-                });
-                var n = yield fetch("https://musiclab.chromeexperiments.com/Song-Maker/save", {
-                    method: "POST",
-                    body: e
-                }).then(e => {
-                    if (e.ok) {
-                        var n = e.json();
-                        return t.emitter.emit("save-success", n), n
-                    }
-                    throw new Error("could not post file: ".concat(e.status))
-                });
-                t.url.setId(n.id)
+
+                nr.downloadMidi()
+                var n = { "url": "https://musiclab.chromeexperiments.com/Song-Maker/song/5505167685320704", "id": 5505167685320704, "success": true }
+             
+                return t.emitter.emit("save-success", n), n
             }))()
         }
         load(t) {
