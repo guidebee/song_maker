@@ -2,7 +2,7 @@ import music21.midi
 from music21 import graph
 
 china_mf = music21.midi.MidiFile()
-china_mf.open('./1-piano.mid', 'rb')
+china_mf.open('./1-.mid', 'rb')
 china_mf.read()
 china_mf.close()
 
@@ -115,7 +115,7 @@ for n in all_notes:
 scale = int(max_offset / min_offset)*2
 max_x = 0
 min_x = 10000
-
+scale=4
 print(f"scale={scale}")
 for n in all_notes:
     if not n.isRest:
